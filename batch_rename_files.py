@@ -11,6 +11,33 @@ __version__ = '1.0'
 
 import os
 import sys
+import getopt
+
+def para_chk():
+    if (len(sys.argv) == 4):
+        pass    
+    else:
+        print "========================================================"
+        print " Error: Please input 3 arguments!"
+        print " Usage: Python xxx.py work_dir old_ext new_ext"
+        print " e.g.: Python batch_rename_files.py E:\\test .py .txt"
+        print "========================================================"
+        exit()
+
+
+opts,args = getopt.getopt(sys.argv[1:],'-h-f:-v',['help','filename=','version'])
+for opt_name,opt_value in opts:
+    if opt_name in ('-h','--help'):
+        print("[*] Help info")
+        exit()
+    if opt_name in ('-v','--version'):
+        print("[*] Version is 0.01 ")
+        exit()
+    if opt_name in ('-f','--filename'):
+        fileName = opt_value
+        print("[*] Filename is ",fileName)
+        # do something
+        exit()
 
 
 def batch_rename(work_dir, old_ext, new_ext):
@@ -33,6 +60,8 @@ def batch_rename(work_dir, old_ext, new_ext):
             )
 
 
+
+
 def main():
     '''
     This will be called if the script is directly envoked.
@@ -47,5 +76,6 @@ def main():
 
 
 if __name__ == '__main__':
+    para_chk()
     main()
 
