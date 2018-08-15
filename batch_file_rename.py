@@ -1,12 +1,12 @@
 # batch_file_rename.py
-# Created: 6th August 2012
+# Created: 14th August 2018
 
 '''
 This will batch rename a group of files in a given directory,
-once you pass the current and new extensions
+once you pass the current and new suffix
 '''
 
-__author__ = 'Craig Richards'
+__author__ = 'Xiang Xue'
 __version__ = '1.0'
 
 import os
@@ -16,13 +16,13 @@ import sys
 def batch_rename(work_dir, old_ext, new_ext):
     '''
     This will batch rename a group of files in a given directory,
-    once you pass the current and new extensions
+    once you pass the current and new suffix
     '''
     # files = os.listdir(work_dir)
     for filename in os.listdir(work_dir):
         # Get the file extension
         file_ext = os.path.splitext(filename)[1]
-        # Start of the logic to check the file extensions, if old_ext = file_ext
+        # Start of the logic to check the file suffix, if old_ext = file_ext
         if old_ext == file_ext:
             # Set newfile to be the filename, replaced with the new extension
             newfile = filename.replace(old_ext, new_ext)
