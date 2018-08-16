@@ -79,7 +79,7 @@ def para_chk():
         print color.yellow("========================================================")
         print color.yellow(" Warnning: Please input 3 arguments!")
         print color.yellow(" Usage: Python xxx.py work_dir old_ext new_ext")
-        print color.yellow(" e.g.: Python batch_rename_files.py E:\\\test .py .txt")
+        print color.yellow(" e.g.: Python batch_rename_files.py E:\\\\test .py .txt")
         print color.yellow("========================================================")
         exit()
 
