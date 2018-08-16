@@ -55,26 +55,32 @@ class Colored(object):
     #  前景色:白色  背景色:绿色
     def white_green(self, s):
         return Fore.WHITE + Back.GREEN + s + Fore.RESET + Back.RESET
- 
-color = Colored()
-print color.red('I am red!')
-print color.green('I am gree!')
-print color.yellow('I am yellow!')
-print color.blue('I am blue!')
-print color.magenta('I am magenta!')
-print color.cyan('I am cyan!')
-print color.white('I am white!')
-print color.white_green('I am white green!')
+
+    #  前景色:黄色  背景色:白色
+    def yellow_white(self, s):
+        return Fore.YELLOW + Back.WHITE + s + Fore.RESET + Back.RESET
+
+
+# color = Colored()
+# print color.red('I am red!')
+# print color.green('I am gree!')
+# print color.yellow('I am yellow!')
+# print color.blue('I am blue!')
+# print color.magenta('I am magenta!')
+# print color.cyan('I am cyan!')
+# print color.white('I am white!')
+# print color.white_green('I am white green!')
 
 def para_chk():
+    color = Colored()
     if (len(sys.argv) == 4):
         pass    
     else:
-        print "========================================================"
-        print " Error: Please input 3 arguments!"
-        print " Usage: Python xxx.py work_dir old_ext new_ext"
-        print " e.g.: Python batch_rename_files.py E:\\test .py .txt"
-        print "========================================================"
+        print color.yellow("========================================================")
+        print color.yellow(" Warnning: Please input 3 arguments!")
+        print color.yellow(" Usage: Python xxx.py work_dir old_ext new_ext")
+        print color.yellow(" e.g.: Python batch_rename_files.py E:\\\test .py .txt")
+        print color.yellow("========================================================")
         exit()
 
 
