@@ -68,7 +68,7 @@ class Colored(object):
 
 def para_chk():
     color = Colored()
-    if (len(sys.argv) == 4):
+    if (len(sys.argv) == 1):
         pass    
     else:
         print color.yellow("========================================================")
@@ -116,6 +116,9 @@ def main():
     '''
     This will be called if the script is directly envoked.
     '''
+    print "Hi,please choose 1 for add strings, 2 for delete strings!"
+
+
     # Set the variable work_dir with the first argument passed
     work_dir = sys.argv[1]
     # Set the variable old_ext with the second argument passed
