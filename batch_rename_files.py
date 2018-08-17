@@ -117,7 +117,8 @@ def batch_rename_rm_kw(work_dir, kw1, kw2):
     # files = os.listdir(work_dir)
     for filename in os.listdir(work_dir):
         # Get the file name
-        new_filename = kw1 + os.path.splitext(filename)[0] + kw2 + '.py'
+        fname_without_suffix = os.path.splitext(filename)[0]
+        new_filename = fname_without_suffix[int(kw1):-int(kw2)] + '.py'
         # Write the files
         os.rename(
           os.path.join(work_dir, filename),
