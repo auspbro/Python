@@ -73,8 +73,8 @@ def para_chk():
     else:
         print color.yellow("========================================================")
         print color.yellow(" Warnning: Please input 2 arguments!")
-        print color.yellow(" Usage: Python xxx.py work_dir keyword")
-        print color.yellow(" e.g.: Python batch_rename_files.py E:\\\\test xx")
+        print color.yellow(" Usage: Python xxx.py work_dir")
+        print color.yellow(" e.g.: Python batch_rename_files.py E:\\\\test")
         print color.yellow("========================================================")
         exit()
 
@@ -136,12 +136,12 @@ def main():
     # Set the variable work_dir with the first argument passed
     work_dir = sys.argv[1]
 
-    response = raw_input()
-    if response == 'A':
+    user_input = raw_input()
+    if user_input == 'A':
         kw1 = raw_input("please input second argument kw1:")
         kw2 = raw_input("please input third argument kw2:")
         batch_rename_add_kw(work_dir, kw1, kw2)
-    elif response == 'D':
+    elif user_input == 'D':
         kw1 = raw_input("please input second argument kw1:")
         kw2 = raw_input("please input third argument kw2:")
         batch_rename_rm_kw(work_dir, kw1, kw2)
