@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 # batch_file_rename.py
-# Created: 16th August 2018
+# Created: 17th August 2018
 
 '''
 This will batch rename a group of files in a given directory,
@@ -61,18 +61,18 @@ class Colored(object):
         return Fore.YELLOW + Back.WHITE + s + Fore.RESET + Back.RESET
 
 
-# color = Colored()
+color = Colored()
 # print color.red('I am red!')
 # print color.green('I am gree!')
 # print color.white_green('I am white green!')
 
 def para_chk():
-    color = Colored()
-    if (len(sys.argv) == 1):
+    # color = Colored()
+    if (len(sys.argv) == 2):
         pass    
     else:
         print color.yellow("========================================================")
-        print color.yellow(" Warnning: Please input 4 arguments!")
+        print color.yellow(" Warnning: Please input 2 arguments!")
         print color.yellow(" Usage: Python xxx.py work_dir keyword")
         print color.yellow(" e.g.: Python batch_rename_files.py E:\\\\test xx")
         print color.yellow("========================================================")
@@ -94,7 +94,22 @@ for opt_name,opt_value in opts:
         exit()
 
 
-def batch_rename(work_dir, kw1, kw2):
+def batch_rename_add_kw(work_dir, kw1, kw2):
+    '''
+    This will batch rename a group of files in a given directory,
+    once you pass the current and new suffix
+    '''
+    # files = os.listdir(work_dir)
+    for filename in os.listdir(work_dir):
+        # Get the file name
+        new_filename = kw1 + os.path.splitext(filename)[0] + kw2 + '.py'
+        # Write the files
+        os.rename(
+          os.path.join(work_dir, filename),
+          os.path.join(work_dir, new_filename)
+        )
+
+def batch_rename_rm_kw(work_dir, kw1, kw2):
     '''
     This will batch rename a group of files in a given directory,
     once you pass the current and new suffix
@@ -111,21 +126,31 @@ def batch_rename(work_dir, kw1, kw2):
 
 
 
-
 def main():
     '''
     This will be called if the script is directly envoked.
     '''
-    print "Hi,please choose 1 for add strings, 2 for delete strings!"
-
+    print "Hi,please choose 'A' for add strings, 'D' for delete strings!"
 
     # Set the variable work_dir with the first argument passed
     work_dir = sys.argv[1]
+
+    response = raw_input()
+    if response == 'A':
+        kw1 = raw_input("please input second argument kw1:")
+        kw2 = raw_input("please input third argument kw2:")
+        batch_rename_add_kw(work_dir, kw1, kw2)
+    elif response == 'D':
+        kw1 = raw_input("please input second argument kw1:")
+        kw2 = raw_input("please input third argument kw2:")
+        batch_rename_rm_kw(work_dir, kw1, kw2)
+    else:
+        print color.red("Error,Invalid input!")
+
     # Set the variable old_ext with the second argument passed
-    kw1 = sys.argv[2]
+    # kw1 = sys.argv[2]
     # Set the variable new_ext with the third argument passed
-    kw2 = sys.argv[3]
-    batch_rename(work_dir, kw1, kw2)
+    # kw2 = sys.argv[3]
 
 
 if __name__ == '__main__':
